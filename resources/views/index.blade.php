@@ -41,6 +41,21 @@
 						<textarea class="form-control" name="description"></textarea>
 					</div>
 
+					{{-- 
+					@php
+						$proyectos = \App\Models\Project::all();
+					@endphp
+					--}}
+					
+					<div class="form-group mb-3">
+						<label>Proyectos</label>
+						<select class="form-control" name="project_id">
+							@foreach($proyectos as $proyecto)
+								<option value="{{ $proyecto->id }}">{{ $proyecto->name }}</option>
+							@endforeach
+						</select>
+					</div>
+
 					<div class="form-group mb-3">
 						<label>Modalidad</label>
 						<select class="form-control" name="modality">

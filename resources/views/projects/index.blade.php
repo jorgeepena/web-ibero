@@ -79,11 +79,14 @@
 
 				<div class="tareas">
 					<ul>
-						<li>Tarea 1</li>
-						<li>Tarea 2</li>
-						<li>Tarea 3</li>
+						<!-- Vamos a hacer un LOOP en la colección de tareas vinculadas -->
+						@foreach($proyecto->tareas as $tarea)
+							<li>{{ $tarea->name }}</li>
+						@endforeach
 					</ul>
 				</div>
+
+				<a href="" class="btn btn-primary btn-block">Agregar Tarea</a>
 			</div>	
 		</div>
 		@endforeach

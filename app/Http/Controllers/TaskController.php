@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Task;
+use App\Models\Project;
+
 use Illuminate\Http\Request;
 
 class TaskController extends Controller
@@ -13,8 +15,11 @@ class TaskController extends Controller
     {
         // Colección de Tareas
         $tareas = Task::all();
+        $proyectos = Project::all();
 
-        return view('index')->with('tareas', $tareas);
+        return view('index')
+        ->with('tareas', $tareas)
+        ->with('proyectos', $proyectos);
     }
 
     //VISTA CREAR
@@ -32,6 +37,7 @@ class TaskController extends Controller
             'description' => $request->description,
             'due_date' => $request->due_date,
             'modality' => $request->modality,
+            'project_id' => $request->project_id
         ]);
 
         // Modo N00B
@@ -73,6 +79,7 @@ class TaskController extends Controller
             'description' => $request->description,
             'due_date' => $request->due_date,
             'modality' => $request->modality,
+            'project_id' => $request->project_id
         ]);
 
         if ($request->origen == 'edit') {
