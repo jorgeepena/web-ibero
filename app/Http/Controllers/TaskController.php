@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Auth;
 use App\Models\Task;
 use App\Models\Project;
 
@@ -14,10 +15,10 @@ class TaskController extends Controller
     public function index()
     {
         // Colección de Tareas
-        $tareas = Task::all();
-        $proyectos = Project::all();
+        $tareas = Task::where('user_id', Auth::user()->id)->get();
+        $proyectos = Project::where('user_id', Auth::user()->id)->get();
 
-        return view('index')
+        return view('tasks.index')
         ->with('tareas', $tareas)
         ->with('proyectos', $proyectos);
     }
@@ -26,13 +27,14 @@ class TaskController extends Controller
     //FORMULARIO DE CREACIÓN
     public function create()
     {
-        return view('create');
+        return view('tasks.create');
     }
 
     public function store(Request $request)
     {
         // Modo Pro
         $tarea = Task::create([
+            'user_id' => Auth::user()->id,
             'name' => $request->name,
             'description' => $request->description,
             'due_date' => $request->due_date,
@@ -57,9 +59,14 @@ class TaskController extends Controller
     // VISTA DE UNA SOLA TAREA
     public function show($id)
     {
-        $tarea = Task::find($id);
+        $tarea = Task::where('id', $id)->where('user_id', Auth::user()->id)->first();
 
-        return view('show')->with('tarea', $tarea);
+        if (empty($tarea)) {
+            return redirect()->back();
+        }else{
+            return view('tasks.show')->with('tarea', $tarea);
+        }
+        
     }
 
     // ACTUALIZAR / EDITAR
@@ -67,7 +74,7 @@ class TaskController extends Controller
     {
         $tarea = Task::find($id);
 
-        return view('edit')->with('tarea', $tarea);
+        return view('tasks.edit')->with('tarea', $tarea);
     }
 
     public function update(Request $request, $id)

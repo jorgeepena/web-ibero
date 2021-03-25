@@ -23,7 +23,6 @@
 				<div class="modal-body">
 					<!-- Nuestro campo de protección de formulario -->
 					{{ csrf_field() }}
-
 					<!-- Campos de formulario -->
 					<div class="form-group mb-3">
 						<label>Nombre de Proyecto</label>

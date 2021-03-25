@@ -1,23 +1,41 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-	<div class="container-fluid">
-		<a class="navbar-brand" href="{{ route('tareas.index') }}">
-	      <img src="http://placehold.it/50x50" alt="" width="30" height="24" class="d-inline-block align-top">
-	      App Tareas
-	    </a>
+<div class="container">
+	<header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
+		<a href="/" class="d-flex align-items-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none">
+			App Tareas
+		</a>
 
-		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-			<span class="navbar-toggler-icon"></span>
-		</button>
-		<div class="collapse navbar-collapse" id="navbarSupportedContent">
-			<ul class="navbar-nav me-auto mb-2 mb-lg-0">
-				<li class="nav-item">
-					<a class="nav-link active" aria-current="page" href="{{ route('tareas.index')}}">Vista Principal</a>
-				</li>
-			</ul>
-			<form class="d-flex">
-				<input class="form-control me-2" type="search" placeholder="Busqueda General..." aria-label="Búsqueda">
-				<button class="btn btn-outline-success" type="submit">Búsqueda</button>
-			</form>
+		<ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
+			@guest
+
+			@else
+			<li><a href="{{ route('home') }}" class="nav-link px-2 link-secondary"><ion-icon name="home-outline"></ion-icon> Vista General</a></li>
+			<li><a href="{{ route('proyectos.index') }}" class="nav-link px-2 link-dark"><ion-icon name="folder-open-outline"></ion-icon> Proyectos</a></li>
+			<li><a href="{{ route('tareas.index') }}" class="nav-link px-2 link-dark"><ion-icon name="list-outline"></ion-icon> Tareas</a></li>
+			@endguest
+		</ul>
+
+		<div class="col-md-3 text-end">
+			@guest
+				<a href="{{ route('login') }}" class="btn btn-outline-primary me-2"><ion-icon name="log-in-outline"></ion-icon> Iniciar Sesión</a>
+				<a href="{{ route('register') }}" class="btn btn-primary"><ion-icon name="add-circle-outline"></ion-icon> Registro</a>
+			@else
+			<div class="dropdown">
+				<button class="btn btn-link" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+					Bienvenido, {{ Auth::user()->name }}
+				</button>
+				<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+					<li>
+						<a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
+                        Cerrar Sesión
+                    	</a>
+
+	                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+	                        @csrf
+	                    </form>
+                	</li>
+				</ul>
+			</div>
+			@endguest
 		</div>
-	</div>
-</nav>
+	</header>
+</div>
