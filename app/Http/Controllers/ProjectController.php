@@ -38,7 +38,7 @@ class ProjectController extends Controller
     public function show($id)
     {
         $proyecto = Project::find($id);
-
+        
         return view('projects.show')->with('proyecto', $proyecto);
     }
 

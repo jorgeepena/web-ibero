@@ -193,6 +193,8 @@
 					    @endforeach
 					  </tbody>
 					</table>
+
+					{{ $tareas->links() }}
 				</div>
 			</div>
 		</div>

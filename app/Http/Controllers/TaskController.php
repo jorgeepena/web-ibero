@@ -15,7 +15,10 @@ class TaskController extends Controller
     public function index()
     {
         // Colección de Tareas
-        $tareas = Task::where('user_id', Auth::user()->id)->get();
+        $tareas = Task::where('user_id', Auth::user()->id)->paginate(30);
+
+        //links();
+
         $proyectos = Project::where('user_id', Auth::user()->id)->get();
 
         return view('tasks.index')

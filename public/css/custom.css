@@ -1,32 +1,40 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap');
+
 body{
+	font-family: 'Playfair Display', serif;
+}
+
+.btn{
+	border-radius: 50px;
+}
+
+.btn-primary{
 	background-color: red;
+	border: none;
+}
+
+.btn-primary:hover{
+	background-color: green;
+	border: none;
+}
+
+.section-home{
+	background: url('https://source.unsplash.com/random');
+	background-size: cover;
+	background-repeat: no-repeat;
+
+	padding-top: 220px;
+	padding-bottom: 300px;
+	height: 100vh;
 	color: #fff;
 }
 
-.nav{
+.main-nav{
 	position: fixed;
+	top: 0;
+	left: 0;
 	width: 100%;
-	background-color: cyan;
-	color: green;
-	padding: 10px 20px;
-}
-
-.nav .d-flex{
-	display: flex;
-}
-
-.nav ul li{
-	display: inline-block;
-	margin: 0px 20px;
-}
-
-h1{
-	font-size: 10vw;
+	z-index: 99;
 	color: #fff;
-	padding: 120px 30px;
 }
 
-footer{
-	background-color: black;
-	padding: 30px 30px;
-}

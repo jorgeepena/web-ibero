@@ -39,3 +39,11 @@ Route::group(['middleware' => 'auth'], function(){
 		'as' => 'home'
 	]);
 });
+
+// Ruta fuera de Middleware //
+/*
+Route::get('/proyectos/{id}', [
+	'uses' => 'App\Http\Controllers\ProjectController@show',
+	'as' => 'proyectos.show'
+]);
+*/

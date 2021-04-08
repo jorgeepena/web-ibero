@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('content')
-<div class="px-4 pt-5 my-5 text-center border-bottom">
+<div class="section-home text-center">
   <h1 class="display-4 fw-bold">La mejor App de Tareas</h1>
   <div class="col-lg-6 mx-auto">
     <p class="lead mb-4">¿Cansado de Microsoft Teams? ¿Cansado de sistemas muy complejos? Tenemos la app para ti, esta es la mejor forma de regisstrar tus tareas y trabajar eficientemente.</p>
@@ -17,6 +17,5 @@
     </div>
   </div>
 </div>
-
 @endsection
 
