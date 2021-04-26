@@ -1,7 +1,7 @@
 # Repositorio de Proyecto Web en la Ibero
 ##### Elaborado por el Profesor Jorge Peña
 
-Este es un listado de las funcionalidades de nuestro proyecto:
+Modificacion: Este es un listado de las funcionalidades de nuestro proyecto:
 * Módulo Tareas
 * Módulo Proyectos 
 * Módulo Autenticación
